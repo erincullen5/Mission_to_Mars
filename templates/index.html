@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Mission To Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scraper" role="button"> Find New Mars Data!</a></p>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h2 class="card-title">Latest Mars News - Straight from NASA</h2>
+            </div>
+        </div>
+    </div>
+    {% if data %}
+    <div class="container">
+        <div class ="row">
+            <div class="col-sm-12 col-md-12 ">
+                <h3>{{ data.headline }} </h3>
+                <p>{{ data.news }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class ="row">
+            <div class="col-md-8">
+                <h3>Featured Mars Image</h3>
+                <img src= "{{ data.featured_img_url }}" id="home_page_img">
+            </div>
+
+            <div class="col-md-4">
+                <div class ="weather_box">
+                    <h3>Current Weather on Mars</h3>   
+                    {{ data.weather }} 
+                </div>
+                {{data.table | safe}}
+            </div>
+        </div>
+        
+        <div class="hemi_box">
+            <div clas="row">
+                <div class="col-md-6">
+                    <img src= "{{data.hemispheres[0].image_url}}" id="home_page_img">
+                    <h3>{{data.hemispheres[0].title}}</h3>
+                </div>
+
+                <div class="col-md-6">
+                    <img src= "{{data.hemispheres[0].image_url}}" id="home_page_img">
+                    <h3>{{data.hemispheres[1].title}}</h3>
+                </div>
+            </div>
+            
+            <div clas="row">
+                <div class="col-md-6">
+                    <img src= "{{data.hemispheres[2].image_url}}" id="home_page_img">
+                    <h3>{{data.hemispheres[2].title}}</h3>
+                </div>
+                
+                <div class="col-md-6">
+                    <img src= "{{data.hemispheres[3].image_url}}" id="home_page_img">
+                    <h3>{{data.hemispheres[3].title}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</body>
+
+</html>
